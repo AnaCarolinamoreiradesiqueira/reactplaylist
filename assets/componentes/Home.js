@@ -116,6 +116,8 @@ const estilo = StyleSheet.create({
     shadowColor: 'blue',
     elevation: 10, 
     backgroundColor: 'white', 
+    borderWidth: 4, // Espessura da borda
+    borderColor: '#bababa', // Cor da borda (cinza)
   },
 
   textContainer: {

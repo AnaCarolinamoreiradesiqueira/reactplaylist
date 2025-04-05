@@ -1,17 +1,32 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, ScrollView, Image } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, Image, TextInput } from 'react-native';
+import { Ionicons } from 'react-native-vector-icons';
 
 export default function Playlist() {
+  const [searchText, setSearchText] = React.useState(''); // Para gerenciar o texto da pesquisa
+
   return (
     <ScrollView style={estilo.scrollView}>
       <View style={estilo.container}>
 
-        {/* Título "PLAYLIST MÚSICAS MAIS TOCADAS" com o mesmo estilo do título "Artistas" */}
+        {/* Título "PLAYLIST MÚSICAS MAIS TOCADAS" */}
         <Text style={estilo.title}>PLAYLIST MÚSICAS MAIS TOCADAS</Text>
 
+        {/* Barra de Pesquisa com Ícone de Lupa */}
+        <View style={estilo.searchBarContainer}>
+          <Ionicons name="search" size={24} color="#888" style={estilo.searchIcon} />
+          <TextInput
+            style={estilo.searchBar}
+            placeholder="Pesquisar músicas..."
+            value={searchText}
+            onChangeText={setSearchText} // Atualiza o estado conforme digita
+          />
+        </View>
+
+        {/* Cards de Músicas */}
         {/* Card de "7 Rings" */}
         <View style={estilo.card}>
-          <Image source={require('../a2.jpg')} style={estilo.imgArt} />
+          <Image source={require('../p1.jpg')} style={estilo.imgArt} />
           <View style={estilo.cardContent}>
             <Text style={estilo.titulo}>7 Rings</Text>
             <Text style={estilo.artista}>Ariana Grande</Text>
@@ -27,7 +42,7 @@ export default function Playlist() {
 
         {/* Card de "SICKO MODE" */}
         <View style={estilo.card}>
-          <Image source={require('../tra.webp')} style={estilo.imgArt} />
+          <Image source={require('../p2.jpg')} style={estilo.imgArt} />
           <View style={estilo.cardContent}>
             <Text style={estilo.titulo}>SICKO MODE</Text>
             <Text style={estilo.artista}>Travis Scott</Text>
@@ -43,7 +58,7 @@ export default function Playlist() {
 
         {/* Card de "HUMBLE." */}
         <View style={estilo.card}>
-          <Image source={require('../ken.jpeg')} style={estilo.imgArt} />
+          <Image source={require('../p3.jpg')} style={estilo.imgArt} />
           <View style={estilo.cardContent}>
             <Text style={estilo.titulo}>HUMBLE.</Text>
             <Text style={estilo.artista}>Kendrick Lamar</Text>
@@ -59,7 +74,7 @@ export default function Playlist() {
 
         {/* Card de "Billie Jean" */}
         <View style={estilo.card}>
-          <Image source={require('../mike.webp')} style={estilo.imgArt} />
+          <Image source={require('../p4.jpg')} style={estilo.imgArt} />
           <View style={estilo.cardContent}>
             <Text style={estilo.titulo}>Billie Jean</Text>
             <Text style={estilo.artista}>Michael Jackson</Text>
@@ -101,6 +116,35 @@ const estilo = StyleSheet.create({
     textShadowRadius: 6,
   },
 
+  // Contêiner da barra de pesquisa
+  searchBarContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    width: '100%',
+    height: 40,
+    borderRadius: 20,
+    paddingLeft: 15,
+    marginBottom: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 6,
+    elevation: 5,
+  },
+
+  // Ícone de lupa
+  searchIcon: {
+    marginRight: 10,
+  },
+
+  // Estilo da barra de pesquisa
+  searchBar: {
+    flex: 1,
+    fontSize: 16,
+    color: '#888',
+  },
+
   card: {
     width: '100%',
     backgroundColor: '#fff',
@@ -116,6 +160,7 @@ const estilo = StyleSheet.create({
     padding: 15,
   },
 
+  // Adicionando borda cinza nas imagens
   imgArt: {
     height: 80,
     width: 80,
@@ -124,6 +169,8 @@ const estilo = StyleSheet.create({
     backgroundColor: '#ddd',
     shadowColor: 'blue',
     elevation: 10,
+    borderWidth: 4, // Espessura da borda
+    borderColor: '#ccc', // Cor da borda (cinza)
   },
 
   cardContent: {
@@ -169,4 +216,3 @@ const estilo = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
